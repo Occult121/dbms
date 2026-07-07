@@ -1,0 +1,119 @@
+<html><head><style> 
+#holder { display : flex; flex-direction :row; background-color :blue; flex-wrap :wrap; 
+justify-content :space-around , space-between; } 
+#holder >div { background-color :white; margin :10px; border :10px;} </style></head> 
+
+<body style ="background-color :LightGreen"> 
+<marquee behavior="slide"><h1>DBMS </h1></marquee><br> 
+
+<h2><nav> 
+<a href="C:\Users\Admin\Downloads\cen.html#lossless"> LOSS - LESS JOIN DECOMPOSITION </a>| 
+<a href="C:\Users\Admin\Downloads\cen.html#func"> FUNCTIONAL DEPENDENCIES </a>| 
+<a href="C:\Users\Admin\Downloads\cen.html#normalize"> NORMALIZATION </a>| 
+<a href="C:\Users\Admin\Downloads\cen.html#checkpt"> CHECK -PT METHOD OF LOG RECOVERY </a>| 
+<a href="C:\Users\Admin\Downloads\cen.html#acid"> TRANSACTIONS </a>| 
+<a href="C:\Users\Admin\Downloads\cen.html#others"> OTHERS </a> 
+</nav></h2> 
+<br> 
+<div id ="holder"> 
+<div> 
+<section id ="lossless"> 
+<a target="_blank" href="#lossless join decomposition"> lossless join decomposition </a><br> 
+there are 2 rels r1 and r2 s.t for all attributes in r1 and r2 there is always r1   u    r2 ---->r1 and r1    u   r2 ---->r2 holding good <br> 
+dependency preservation occurs herein <br><br> 
+<a target="_blank" href="https://www.geeksforgeeks.org/dbms/decomposition-in-dbms/"><img src ="https://media.geeksforgeeks.org/wp-content/uploads/20240225103808/Screenshot-2024-02-25-103756.png" alt ="g" width ="350" height ="350"></a> 
+<br></section> 
+</div> 
+
+<div><section id="func">
+<a target="_blank" href="#types of functional dependencies"> types of functional dependencies </a><br> 
+<table width ="60%" border ="1"> 
+<thead><tr><th> full functional dependency </th> 
+<th> partial functional dependency </th> 
+<th> transitive dependency </th> 
+<th> multi - valued dependency </th> 
+<th> join dependency </th></tr></thead> 
+
+
+<tbody> 
+<tr><td> all non key atributes are wholly dependent on key atribute </td> 
+<td> some non key atributes are dependent on key atribute and remaining non key atributes are dependent on key atribute and on some other non key atributes </td> 
+<td> atributes in key col. of one rel correspond to the key atributes in col. of another rel </td> 
+<td> in 4 NF </td> 
+<td> in 5NF </td></tr></tbody> 
+</table> 
+
+<figure> 
+<img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXdCcDAfTXSaDtkJBs0_9uGpDByfi08sWMhptWU9VDI2UnhnXps-jrf-1xItm2yR5CsboKNRf8z-5V5z4qERw2J7SmwLDFc9KuV2FGQx8TkJZiLZaam7VBBt35w9PAJN857fXCOOVA?key=-pXXEKt65yjqYvqZstvseel8" alt ="h" width ="350" height ="350"> 
+<figcaption><a target="_blank" href="https://talent500.com/blog/types-of-functional-dependencies-dbms/">https://talent500.com/blog/types-of-functional-dependencies-dbms/</a></figcaption> 
+</figure> 
+<br></section> 
+</div> 
+
+
+<div> 
+<section id="normalize"> 
+<a target="_blank" href="#normalization"> normalization </a><br> 
+the removal of redundancy from tables / rels is normalization <br> 
+while 1nf has redundant data that is eliminated to some extent in 2nf <br> 
+still improvised nf is BCNF  that describes super key values . all rels in 3NF  are in BCNF though the reverse is not always true . there is a rel schema r <br> 
+where for all func. dependencies f on r , can find a <--- r and b <--- r s.t   a ---->b is a trivial dependency in f <sup> + </sup> , s.t at least <br> 
+one of foll. is true : 
+a --->b is a trivial dependency in r <br> 
+a is a super key to r <br><br> 
+
+still improvised nf is 3NF that describes candidate keys , transitive dependencies . there is a rel schema r <br> 
+where for all func. dependencies f on r , can find a <--- r and b <--- r s.t   a ---->b is a trivial dependency in f <sup> + </sup> , s.t at least <br> 
+one of foll. is true : 
+a --->b is a trivial dependency in r <br> 
+a is a super key to r <br> 
+can find an extraneous atribute in [b-a], that is contained in a candidate key for r <br><br> 
+
+4nf describes multi - valued dependencies <br> 
+
+5NF  describes join dependencies <br><br></section></div> 
+
+<div> 
+<section id ="checkpt"> 
+Where a database is to recovery from hd failure , we use check pt method of log- recovery . a check –pt is a special log record . the main stages in this recovery using check pts as foll 
+Output onto stable storage all log records residing in  main memory ---- output all modified buffer blocks onto disk ----- output onto stable storage a log record check pt 
+No database modifications can occurs where a check pt In progress <br> 
+we now suppose that a hd failure occurs where a transaction executes . the log is consulted backwds till finds the transaction commit , log is still consulted backwds till finds the check pt , log is still consulted backwds till finds transaction start --- now , undo and redo operations can be performed on this transaction and any that executed thereafter 
+For concurrent transaction  processing , fuzzy check pointing is used <br><br></section></div> 
+
+
+<div> 
+<section id ="acid"> 
+A transaction is a unit of program execution that accesses and or possibly updates various data items. Acid properties of a transaction are : <br> 
+Atomicity --- either transaction executes in entirety or none executes at all <br> 
+Consistency --- state of database remains same both before & after transaction despite system changes<br> 
+Isolation  ---- despite concurrent execution of transactions , each transaction proceeds independently of others despite system changes<br>  
+Durability ----- any modifications made to database as a result of transaction persist even if there are system changes <br> 
+e.gs we have a schedule involving 2 accounts a and b, initial values in   a and b are $ 1000 and $ 2000. A transaction occurs that transfers $ 50 from  a -> b ,<br> 
+ as a result of which , final values In a and b becomes $ 950 and $ 2050. Clearly a consistent state as sum a +b is preserved both before and after <br>
+transaction. We now , suppose that a hd failure occurs after write – a committed but before write –b committed , so, <br> 
+now final values in   a and b becomes $ 950 and $ 2000 , clearly inconsistent state, as sum a +b is no more preserved both before and after transaction.<br> 
+ Even if system failure did not occurs and transaction proceeded to completion, this inconsistent state would not have been visible except <br> 
+during occurrence of transaction. This again reflects atomicity . isolation  is preserved. Durability is preserved through recovery mgmt. component of transactions <br><br> 
+
+
+<img src ="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOIyMK8xOfRQh8nDpGaH61oiFpTPy5BH2uel1rmKetUXIbqdk30uALLOIC&s=10" alt ="rs" width ="500" height ="500"> 
+<br><br></section></div> 
+
+
+<div> 
+<section id ="others"> 
+Decision tree based on ID3 Algorithm that finds data homogeneous and entropy finds to what extent data is homogeneous . we can find entropy from a frequency table . information gain is rel. entropy reduction. We can construct a decision tree by computing info gain for each variable , summing info gains till a max that renders entropy a min <br> 
+<a target="_blank" href="https://t4tutorials.com/c4-5-algorithm-in-data-mining/"><img src="https://t4tutorials.com/wp-content/uploads/C4.5-Algorithm-in-Data-Mining.webp" alt="f" width ="350" height ="350"></a> 
+<br></section> 
+</div> 
+
+</div> 
+<br><br><br><footer> 
+<h2><a target="_blank" href="#RATUL">RATUL</a></h2></footer> 
+<br><br><br></body> 
+</html>
+
+
+
+
